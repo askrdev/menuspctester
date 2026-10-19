@@ -70,7 +70,7 @@ footer{max-width:760px;margin:0 auto;padding:0 22px 40px;color:var(--mute);font-
 #muat p{margin:0}
 .spin{width: 80px;            /* Atur lebar gambar */
   height: 80px;           /* Atur tinggi gambar */
-  background-image: url('foto/spc-hijau.png'); /* GANTI DENGAN URL/PATH GAMBAR KAMU */
+  background-image: url('foto/load-spc.png'); /* GANTI DENGAN URL/PATH GAMBAR KAMU */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
