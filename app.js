@@ -54,8 +54,9 @@ i.textContent=KLIEN.info;i.dataset.en=KLIEN.info_en||KLIEN.info;
 {
   const w=getComputedStyle(document.documentElement),aksen=w.getPropertyValue("--aksen").trim()||"#E0A526",tk=w.getPropertyValue("--aksen-teks").trim()||"#fff";
   const ik=KLIEN.favicon||KLIEN.nama.trim()[0]||"M";
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${aksen}"/><text x="32" y="45" font-size="38" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="${tk}">${esc(ik)}</text></svg>`;
-  const lk=document.createElement("link");lk.rel="icon";lk.href="data:image/svg+xml,"+encodeURIComponent(svg);document.head.append(lk);
+  /*const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${aksen}"/><text x="32" y="45" font-size="38" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="${tk}">${esc(ik)}</text></svg>`;*/
+  /*const lk=document.createElement("link");lk.rel="icon";lk.href="data:image/svg+xml,"+encodeURIComponent(svg);document.head.append(lk);*/
+  const lk=document.createElement("link");lk.rel="icon";lk.href=KLIEN.favicon || "favicon.ico";document.head.append(lk);
   let tm=document.querySelector('meta[name="theme-color"]');if(!tm){tm=document.createElement("meta");tm.name="theme-color";document.head.append(tm)}
   tm.content=w.getPropertyValue("--bg").trim()||"#fff";
   const tl=$("#tautan"),mk=(h,id,en)=>`<a href="${esc(h)}" target="_blank" rel="noopener" data-en="${en}">${id}</a>`;
@@ -132,6 +133,23 @@ document.body.insertAdjacentHTML("beforeend",`<div id="panel" hidden><div class=
 <p class="cat" data-en="Final price is confirmed by the cashier.">Harga final dikonfirmasi oleh kasir.</p>
 <a id="kirim" class="kirim" target="_blank" rel="noopener" data-en="Send order via WhatsApp">Kirim pesanan via WhatsApp</a>
 </div></div><div id="opsi" hidden><div class="lembar" role="dialog" aria-modal="true"></div></div><div id="notif" hidden role="status"></div>`);
+
+const urlParams = new URLSearchParams(window.location.search);
+const nomorMejaParam = urlParams.get('meja');
+
+if (nomorMejaParam) {
+  const inputMeja = $("#in-meja");
+  if (inputMeja) {
+    inputMeja.value = nomorMejaParam;
+    
+    // Kunci input agar tidak bisa diketik/diubah oleh pelanggan
+    inputMeja.readOnly = true;
+    
+    // (Opsional) Tambahkan style visual agar terlihat bahwa input terkunci
+    inputMeja.style.opacity = "0.7";
+    inputMeja.style.cursor = "not-allowed";
+  }
+}
 const panel=$("#panel"),dlg=$("#opsi");
 /* jendela pilihan opsi */
 function pilih(it){
