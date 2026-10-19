@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- ===== 1. PILIH TEMA: modern | gelap | klasik | minimal | melayang | kaca | navy | kotak | poster (lihat tema.css) ===== -->
+<html lang="id" data-tema="gelap">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu</title>
+<meta name="description" content="Menu Rasky Coffee. Nikmati kopi di rumah. Lihat menu dan pesan lewat WhatsApp.">
+<!-- Tampilan saat link dibagikan di WhatsApp/Instagram. og:image harus LINK LENGKAP setelah website online (ganti GANTI-DOMAIN) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta property="og:title" content="Rasky Coffee – Menu">
+<meta property="og:description" content="Nikmati kopi di rumah. Lihat menu dan pesan lewat WhatsApp.">
+<meta property="og:image" content="https://GANTI-DOMAIN/foto/rasky-logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=DM+Sans:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="tema.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== 2. DATA KLIEN: teks Indonesia di tagline/info/pesan, versi Inggris di *_en ===== -->
+<script>
+const KLIEN={
+  nama:"Rasky Coffee",
+  tagline:"Nikmati kopi di rumah.", tagline_en:"Enjoy coffee at home.",
+  info:"Buka setiap hari 08.00–21.00 | RT.4/RW.11, Sunter Jaya, Tanjung Priok, Jakarta Utara 14360",
+  info_en:"Open daily 08:00–21:00 | RT.4/RW.11, Sunter Jaya, Tanjung Priok, North Jakarta 14360",
+  logo:"foto/rasky-logo.png",
+  sheet:"https://docs.google.com/spreadsheets/d/e/2PACX-1vSS0VVKRIXtTuZMgLSRvfOVCfBx87zF9MfzGG1rnouOCtp45JEy6CGvyO6JD-CoUK52oHK-OTraEm4Y/pub?gid=952480822&single=true&output=csv",// link CSV Google Sheets (lihat PANDUAN-GOOGLE-SHEETS.md). Kosong = pakai menu yang ditulis di HTML
+  favicon:"",              // kosong = huruf pertama nama; boleh diisi emoji, contoh "☕"
+  maps:"https://www.google.com/maps/search/?api=1&query=RVVJ%2BJJF+Sunter+Jaya+Jakarta+Utara",   // link Google Maps (kosong = tombol tidak muncul)
+  instagram:"raskycoffee",            // contoh: "raskycoffee" atau link lengkap (kosong = tombol tidak muncul)
+  studio:"Nama Studio Kamu", studio_url:"",   // kredit di bawah halaman (kosongkan studio untuk menyembunyikan)
+  wa:"6285726056451",      // awali 62, tanpa 0 atau +
+  pesan:"Halo, saya mau pesan.", pesan_en:"Hello, I'd like to place an order."
+};
+</script>
+
+<header>
+  <img class="logo" id="logo" alt="" hidden>
+  <h1 id="nama"></h1>
+  <p id="tagline"></p>
+  <div class="info" id="info"></div>
+  <div class="tautan" id="tautan"></div>
+</header>
+
+<nav><div class="bar">
+  <div class="tabs" id="tabs"></div>
+  <div class="bahasa"><button data-l="id" aria-pressed="true">ID</button><button data-l="en" aria-pressed="false">EN</button></div>
+</div></nav>
+
+<main>
+<!-- Menu cadangan: tampil hanya jika Google Sheets gagal dimuat dan belum ada salinan menu di HP pelanggan.
+     class "kosong" = tidak bisa dipesan (tanpa tombol Tambah dan tanpa label Habis). -->
+<section>
+  <h2 data-en="Menu">Menu</h2>
+  <div class="item kosong">
+    <img class="foto" src="foto/no-image.png" alt="" loading="lazy">
+    <div class="isi">
+      <div class="baris">
+        <div class="nama"><span data-en="Menu not available at the moment">Menu tidak tersedia saat ini</span></div>
+      </div>
+      <p class="deskripsi" data-en="Please reload the page, or order directly via WhatsApp.">Silakan muat ulang halaman, atau pesan langsung lewat WhatsApp.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-en="Prices in Rupiah, before tax. Please tell us about any food allergies.">Harga dalam Rupiah, belum termasuk pajak. Beri tahu pelayan jika ada alergi makanan.</footer>
+<a class="wa" id="wa" href="#" target="_blank" rel="noopener" data-en="Order via WhatsApp">Pesan via WhatsApp</a>
+
+<script src="app.js"></script>
+</body>
+</html>

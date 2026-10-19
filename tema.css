@@ -1,0 +1,314 @@
+/* ===== TEMA: satu-satunya file yang diubah untuk menyesuaikan desain klien =====
+   Pilih tema di index.html:  <html data-tema="modern">  (modern | gelap | klasik | minimal)
+   Untuk klien baru: salin salah satu blok, ganti nama dan nilainya, lalu pakai namanya di data-tema. */
+
+/* Modern: hijau sage, segar */
+[data-tema="modern"]{
+  --bg:#EEF1E4; --ink:#1B2B24; --mute:#566358; --line:#C9D1B8;
+  --aksen:#E0A526; --aksen-teks:#1B2B24; --pedas:#B8322A;
+  --font-judul:"Bricolage Grotesque",system-ui,sans-serif; --font-isi:"Source Serif 4",Georgia,serif;
+  --r-foto:10px; --r-tombol:999px; --r-tag:6px; --judul-berat:800;
+}
+/* Gelap: cocok untuk cafe malam, bar, lounge */
+[data-tema="gelap"]{
+  --bg:#14161A; --ink:#F1EDE4; --mute:#9AA0A6; --line:#2C3037;
+  --aksen:#7FD1AE; --aksen-teks:#0F1F18; --pedas:#E8685E;
+  --font-judul:"DM Sans",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:14px; --r-tombol:12px; --r-tag:999px; --judul-berat:700;
+}
+/* Klasik: hangat, cocok untuk resto tradisional atau fine dining */
+[data-tema="klasik"]{
+  --bg:#FBF3E4; --ink:#3A2418; --mute:#7A6455; --line:#E2D2B8;
+  --aksen:#9C3D2E; --aksen-teks:#FFF6E8; --pedas:#9C3D2E;
+  --font-judul:"Source Serif 4",Georgia,serif; --font-isi:"Source Serif 4",Georgia,serif;
+  --r-foto:2px; --r-tombol:2px; --r-tag:2px; --judul-berat:600;
+}
+/* Minimal: putih bersih, cocok untuk cafe modern */
+[data-tema="minimal"]{
+  --bg:#FFFFFF; --ink:#111111; --mute:#6B6B6B; --line:#E6E6E6;
+  --aksen:#111111; --aksen-teks:#FFFFFF; --pedas:#C62828;
+  --font-judul:"DM Sans",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:0; --r-tombol:0; --r-tag:0; --judul-berat:700;
+}
+
+/* Melayang: kotak section mengambang + bulatan dekoratif yang bergerak pelan */
+[data-tema="melayang"]{
+  --bg:#EAF2F0; --ink:#13302B; --mute:#4F6B65; --line:#C6D9D4;
+  --aksen:#F2994A; --aksen-teks:#2B1A08; --pedas:#B8322A;
+  --font-judul:"Bricolage Grotesque",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:14px; --r-tombol:999px; --r-tag:999px; --judul-berat:800;
+  --panel-lebar:1040px;         /* lebar panel: ubah di sini saja */
+  --kartu:#FFFFFF;
+  --bayangan:0 14px 34px rgba(19,48,43,.16), 0 3px 8px rgba(19,48,43,.08);
+}
+[data-tema="melayang"] main{
+  width:calc(100% - 28px);
+  max-width:var(--panel-lebar);
+  margin:0 auto;
+  background:var(--bg);
+  border:0;
+  box-shadow:var(--bayangan);
+}
+/* bar: tab lebih ringkas dan ujungnya memudar */
+[data-tema="melayang"] .tabs{
+  gap:6px;
+  scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);
+  mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);
+  padding-right:28px;
+}
+[data-tema="melayang"] .tabs::-webkit-scrollbar{display:none}
+[data-tema="melayang"] .tab{padding:6px 12px;font-size:12px;letter-spacing:.03em}
+[data-tema="melayang"] .bahasa button{padding:6px 9px;font-size:12px}
+[data-tema="melayang"] .reload{width:32px;height:32px;font-size:16px}
+[data-tema="melayang"] .bar{gap:6px;padding:8px 16px}
+
+/* bulatan melayang, hanya aktif di tema ini */
+[data-tema="melayang"] body{overflow-x:clip}
+[data-tema="melayang"] main{position:relative;z-index:0}
+[data-tema="melayang"] section{position:relative}
+[data-tema="melayang"] section::before,
+[data-tema="melayang"] section::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:50%;
+  animation:melayang-tema 9s ease-in-out infinite;
+}
+[data-tema="melayang"] section::before{
+  width:130px;height:130px;top:-28px;right:-26px;
+  background:#F2994A;opacity:.55;
+}
+[data-tema="melayang"] section::after{
+  width:90px;height:90px;bottom:-22px;left:-20px;
+  background:#13302B;opacity:.18;
+  --bg-gambar:linear-gradient(rgba(242,232,220,.75),rgba(242,232,220,.75)), url(foto/Paper-Cup.png);
+  animation-duration:12s;animation-direction:reverse;
+}
+@keyframes melayang-tema{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(10px,-25px) scale(1.08)}
+}
+@media (prefers-reduced-motion:reduce){
+  [data-tema="melayang"] section::before,
+  [data-tema="melayang"] section::after{animation:none}
+}
+
+/* Kaca: header, bar, main, footer, dan kredit jadi kotak transparan di atas background warna-warni */
+[data-tema="kaca"]{
+  --bg:#EAF2F0; --ink:#13302B; --mute:#3F5A54; --line:rgba(19,48,43,.18);
+  --aksen:#F2994A; --aksen-teks:#2B1A08; --pedas:#B8322A;
+  --font-judul:"Bricolage Grotesque",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:14px; --r-tombol:999px; --r-tag:999px; --judul-berat:800;
+
+  /* pengaturan kaca: ubah di sini, semua kotak ikut berubah */
+  --kaca-bg:rgba(255,255,255,.28);
+  --kaca-blur:blur(14px);
+  --kaca-garis:1px solid rgba(255,255,255,.55);
+  --kaca-bayangan:0 12px 36px rgba(19,48,43,.18);
+}
+
+/* background di belakang kotak (bisa juga url(foto/bg.jpg) center/cover) */
+[data-tema="kaca"] body{
+  background:
+    radial-gradient(circle at 15% 10%,#F7C873 0,transparent 40%),
+    radial-gradient(circle at 85% 30%,#7FD1AE 0,transparent 45%),
+    radial-gradient(circle at 30% 90%,#9DB8F2 0,transparent 45%),
+    #EAF2F0;
+  background-attachment:fixed;
+}
+
+/* gaya kaca bersama */
+[data-tema="kaca"] header,
+[data-tema="kaca"] .bar,
+[data-tema="kaca"] main,
+[data-tema="kaca"] footer,
+[data-tema="kaca"] .kredit{
+  width:calc(100% - 28px);
+  max-width:760px;
+  background:var(--kaca-bg);
+  -webkit-backdrop-filter:var(--kaca-blur);
+  backdrop-filter:var(--kaca-blur);
+  border:var(--kaca-garis);
+  border-radius:24px;
+  box-shadow:var(--kaca-bayangan);
+}
+
+/* ukuran masing-masing */
+[data-tema="kaca"] header{margin:20px auto 0;padding:36px 22px 24px}
+[data-tema="kaca"] main{margin:14px auto 0;padding:8px 22px 28px}
+[data-tema="kaca"] .bar{margin:0 auto;padding:10px 16px;border-radius:20px}
+[data-tema="kaca"] footer{margin:14px auto 0;padding:18px 22px}
+[data-tema="kaca"] .kredit{margin:14px auto 100px;padding:14px 22px}
+
+/* kalau kredit tidak ada, footer jadi elemen terakhir: beri ruang untuk tombol WhatsApp */
+[data-tema="kaca"] footer:last-child{margin-bottom:100px}
+
+/* nav jadi pembungkus transparan, section polos */
+[data-tema="kaca"] nav{background:none;border-bottom:0;padding:14px 0 0}
+[data-tema="kaca"] section{background:none;border:0;box-shadow:none;padding-left:0;padding-right:0}
+
+/* Navy: gaya "Order Summary" */
+[data-tema="navy"]{
+  --bg:#EDECE7; --ink:#26305A; --mute:#6B7090; --line:transparent;
+  --aksen:#26305A; --aksen-teks:#FFFFFF; --pedas:#C0392B;
+  --font-judul:"DM Sans",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:22px; --r-tombol:10px; --r-tag:8px; --judul-berat:800;
+}
+
+/* judul kategori besar, tanpa garis */
+[data-tema="navy"] h2{font-size:28px;margin-bottom:10px}
+[data-tema="navy"] .item{border-top:0;align-items:center;gap:18px;padding:10px 0}
+
+/* foto: kotak membulat dengan bingkai navy */
+[data-tema="navy"] .foto{
+  width:112px;height:112px;padding:10px;
+  background:#4A5176;object-fit:contain;
+}
+
+/* teks: nama di atas, harga di bawah (bertumpuk) */
+[data-tema="navy"] .isi{position:relative;padding-right:52px}
+[data-tema="navy"] .baris{flex-direction:column;gap:4px}
+[data-tema="navy"] .nama{font-weight:800;font-size:19px;line-height:1.2}
+[data-tema="navy"] .harga{font-size:16px;font-weight:700;color:var(--mute)}
+[data-tema="navy"] .deskripsi{font-size:14px;margin-top:6px}
+
+/* tombol Tambah jadi kotak "+" di sisi kanan, sejajar tengah */
+[data-tema="navy"] .tambah{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  margin:0;width:34px;height:34px;padding:0;
+  font-size:0;line-height:0;
+}
+[data-tema="navy"] .tambah::after{content:"+";font:700 22px/34px var(--font-judul);display:block}
+
+/* tab: teks polos, yang aktif bergaris bawah */
+[data-tema="navy"] .tab{border:0;border-radius:0;padding:8px 4px;margin-right:10px;font-weight:700;color:var(--mute)}
+[data-tema="navy"] .tab[aria-pressed="true"]{background:none;color:var(--ink);box-shadow:inset 0 -3px 0 var(--ink)}
+[data-tema="navy"] .bahasa button{border:0;background:#E1E0D9;color:var(--ink)}
+[data-tema="navy"] .bahasa button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* keranjang: tombol +/- kotak navy */
+[data-tema="navy"] .qty{gap:10px;font-weight:700}
+[data-tema="navy"] .qty button{background:var(--ink);color:#fff;border:0;width:30px;height:30px;font-size:20px;line-height:1}
+[data-tema="navy"] .kepala{font-size:24px;font-weight:800}
+[data-tema="navy"] .row{border-top:0;padding:12px 0}
+
+/* Kotak: tiap bagian punya kotak sendiri dengan background sendiri */
+[data-tema="kotak"]{
+  --bg:#E9E4DA; --ink:#1F2A44; --mute:#5C6479; --line:rgba(31,42,68,.14);
+  --aksen:#E0613A; --aksen-teks:#FFFFFF; --pedas:#B8322A;
+  --font-judul:"Bricolage Grotesque",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:12px; --r-tombol:12px; --r-tag:8px; --judul-berat:800;
+
+  /* ganti background tiap kotak di sini (warna, gradasi, atau url(foto/xxx.jpg) center/cover) */
+  --bg-header:#F4C95D;
+  --bg-nav:#FFFFFF;
+  --bg-main:#FFFDF8;
+  --bg-footer:#CFE3D4;
+  --bg-kredit:#1F2A44;
+
+  --kotak-radius:22px;
+  --kotak-bayangan:0 8px 22px rgba(31,42,68,.12);
+}
+
+/* gaya kotak bersama */
+[data-tema="kotak"] header,
+[data-tema="kotak"] .bar,
+[data-tema="kotak"] main,
+[data-tema="kotak"] footer,
+[data-tema="kotak"] .kredit{
+  width:calc(100% - 28px);
+  max-width:760px;
+  border-radius:var(--kotak-radius);
+  box-shadow:var(--kotak-bayangan);
+}
+
+/* background dan ukuran masing-masing */
+[data-tema="kotak"] header{margin:16px auto 0;padding:34px 22px 24px;background:var(--bg-header)}
+[data-tema="kotak"] nav{background:none;border-bottom:0;padding:12px 0 0}
+[data-tema="kotak"] .bar{margin:0 auto;padding:10px 16px;background:var(--bg-nav)}
+[data-tema="kotak"] main{margin:12px auto 0;padding:8px 22px 28px;background:var(--bg-main)}
+[data-tema="kotak"] footer{margin:12px auto 0;padding:18px 22px;background:var(--bg-footer)}
+[data-tema="kotak"] .kredit{margin:12px auto 100px;padding:14px 22px;background:var(--bg-kredit);color:#E9E4DA}
+[data-tema="kotak"] .kredit a{color:inherit}
+
+/* section polos di dalam main */
+[data-tema="kotak"] section{background:none;border:0;box-shadow:none;padding-left:0;padding-right:0}
+
+/* Poster: satu panel krem lebar di atas foto, gaya menu cetak */
+[data-tema="poster"]{
+  --bg:#EFEBD9; --ink:#5B7B4E; --mute:#718568; --line:rgba(91,123,78,.45);
+  --aksen:#5B7B4E; --aksen-teks:#EFEBD9; --pedas:#B8452E;
+  --font-judul:"Bricolage Grotesque",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
+  --r-foto:8px; --r-tombol:6px; --r-tag:4px; --judul-berat:800;
+
+  --panel:#EFEBD9;              /* warna panel (boleh gradasi / url(...)) */
+  --panel-lebar:1040px;         /* lebar panel: ubah di sini saja */
+  --panel-radius:26px;
+  --panel-bayangan:-14px 0 28px -14px rgba(0,0,0,.45), 14px 0 28px -14px rgba(0,0,0,.45);
+}
+
+/* background di belakang panel: ganti dengan fotomu */
+[data-tema="poster"] body{
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.25),rgba(255, 255, 255, 0.25)),
+    url(foto/Paper-Cup.png) center/cover fixed,
+    #ffffff;                    /* cadangan kalau foto belum ada */
+  padding:18px 0 90px;
+}
+
+/* semua bagian menyatu jadi satu panel */
+[data-tema="poster"] header,
+[data-tema="poster"] nav,
+[data-tema="poster"] main,
+[data-tema="poster"] footer,
+[data-tema="poster"] .kredit{
+  width:calc(100% - 28px);
+  max-width:var(--panel-lebar);
+  margin:0 auto;
+  background:var(--panel);
+  border:0;
+  box-shadow:var(--panel-bayangan);
+}
+[data-tema="poster"] header{border-radius:var(--panel-radius) var(--panel-radius) 0 0;padding:36px 28px 12px}
+[data-tema="poster"] nav{padding:0}
+[data-tema="poster"] .bar{max-width:none;padding:10px 28px 12px}
+[data-tema="poster"] main{padding:0 28px 12px}
+[data-tema="poster"] footer{padding:14px 28px 24px;border-top:2px solid var(--line);border-radius:0 0 var(--panel-radius) var(--panel-radius)}
+[data-tema="poster"] .kredit{padding:0 28px 22px;border-radius:0 0 var(--panel-radius) var(--panel-radius)}
+[data-tema="poster"] body:has(.kredit) footer{border-radius:0}
+
+/* judul besar seperti "MENU" */
+[data-tema="poster"] h1{text-transform:uppercase;letter-spacing:-.02em;color:var(--ink)}
+[data-tema="poster"] header p{font-weight:500}
+
+/* tab dan tombol bar */
+[data-tema="poster"] .tab,
+[data-tema="poster"] .bahasa button{text-transform:uppercase;letter-spacing:.04em;font-size:12px;font-weight:700}
+[data-tema="poster"] .tab{padding:6px 14px}
+[data-tema="poster"] .bahasa button{padding:6px 10px}
+[data-tema="poster"] .reload{width:32px;height:32px;font-size:16px}
+
+/* judul kategori: kapital, garis tebal di bawah */
+[data-tema="poster"] section{padding-top:22px}
+[data-tema="poster"] h2{
+  font-size:16px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;
+  padding-bottom:6px;border-bottom:3px solid var(--ink);margin-bottom:6px;
+}
+
+/* item: nama kapital, harga di kanan, tanpa garis */
+[data-tema="poster"] .item{border-top:0;padding:7px 0;gap:12px;align-items:flex-start}
+[data-tema="poster"] .nama{font:800 15px var(--font-judul);text-transform:uppercase;letter-spacing:.03em}
+[data-tema="poster"] .harga{font-size:15px;font-weight:800}
+[data-tema="poster"] .deskripsi{font-size:11px;text-transform:uppercase;letter-spacing:.03em;line-height:1.35;margin-top:2px}
+[data-tema="poster"] .foto{width:58px;height:58px}
+[data-tema="poster"] .tambah{margin-top:6px;padding:4px 12px;font-size:12px}
+
+/* footer dan kredit: kecil, miring, di tengah */
+[data-tema="poster"] footer,
+[data-tema="poster"] .kredit{font-style:italic;text-align:center}
+
+/* layar lebar: menu jadi dua kolom */
+@media (min-width:800px){
+  [data-tema="poster"] main{
+    display:grid;grid-template-columns:1fr 1fr;
+    column-gap:40px;align-items:start;
+  }
+}

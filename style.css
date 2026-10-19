@@ -1,0 +1,101 @@
+/* Layout dasar. Biasanya TIDAK diubah per klien (ubah tema.css saja). */
+*{box-sizing:border-box}
+html{scroll-padding-top:110px}
+body{ margin:0;color:var(--ink);font:400 17px/1.55 var(--font-isi);background-color:var(--bg);background-image:var(--bg-gambar,none);background-size:cover;background-position:center;background-attachment:fixed;}
+h1,h2,.tab,.harga,.wa,.bahasa button{font-family:var(--font-judul)}
+header{padding:48px 22px 24px;max-width:760px;margin:0 auto}
+.logo{max-height:72px;max-width:220px;display:block;margin-bottom:18px}
+h1{font-size:clamp(42px,11vw,80px);line-height:.95;margin:0 0 14px;font-weight:var(--judul-berat);letter-spacing:-.03em}
+header p{margin:0;color:var(--mute);max-width:46ch}
+.info{margin-top:14px;font-size:15px;color:var(--mute)}
+nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;max-width:760px;margin:0 auto;padding:10px 22px}
+.tabs{display:flex;gap:8px;overflow-x:auto;flex:1 0 100%;order:3;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab,.bahasa button{flex:none;border:1.5px solid var(--ink);background:none;color:var(--ink);padding:7px 15px;border-radius:var(--r-tombol);font-size:15px;font-weight:500;cursor:pointer}
+.tab[aria-pressed="true"],
+.bahasa button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.bahasa{display:flex;gap:4px;flex:none;order:1;margin-left:auto}
+.reload{order:2}
+.bahasa button{padding:7px 11px;font-size:13px}
+button:focus-visible,a:focus-visible{outline:3px solid var(--aksen);outline-offset:2px}
+main{max-width:760px;margin:0 auto;padding:8px 22px 120px}
+section{padding-top:28px}
+h2{font-size:30px;margin:0 0 4px;font-weight:var(--judul-berat);letter-spacing:-.02em}
+.catatan{margin:0 0 12px;color:var(--mute);font-style:italic;font-size:15px}
+.item{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line)}
+.isi{flex:1;min-width:0}
+.baris{display:flex;justify-content:space-between;gap:12px}
+.nama{font-weight:600;font-size:19px}
+.harga{font-weight:800;font-size:18px;white-space:nowrap}
+.deskripsi{margin:2px 0 0;color:var(--mute);font-size:16px}
+.foto{width:96px;height:96px;object-fit:cover;border-radius:var(--r-foto);flex:none;background:var(--line)}
+.tag{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:var(--r-tag);font:500 12px var(--font-judul);vertical-align:2px;background:var(--aksen);color:var(--aksen-teks)}
+.tag.pedas{background:var(--pedas);color:#fff}
+.tag.stok{background:var(--ink);color:var(--bg)}
+.habis .foto,.habis .nama,.habis .deskripsi,.habis .harga{opacity:.45}
+.habis .harga{text-decoration:line-through}
+footer{max-width:760px;margin:0 auto;padding:0 22px 40px;color:var(--mute);font-size:14px}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:#25D366;color:#073B1B;text-decoration:none;font-weight:800;font-size:16px;padding:13px 20px;border-radius:var(--r-tombol);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+
+/* ===== Keranjang pesanan ===== */
+.tambah{margin-top:10px;border:0;background:var(--aksen);color:var(--aksen-teks);font:600 14px var(--font-judul);padding:7px 14px;border-radius:var(--r-tombol);cursor:pointer}
+#panel{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+#panel[hidden]{display:none}
+.lembar{background:var(--bg);color:var(--ink);width:100%;max-width:560px;max-height:85vh;overflow:auto;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));border-radius:18px 18px 0 0}
+.kepala{display:flex;justify-content:space-between;align-items:center;font:700 20px var(--font-judul);margin-bottom:8px}
+.kepala button{border:0;background:none;color:var(--ink);font-size:20px;cursor:pointer;padding:4px 8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.rn{font-weight:600}.rn small{display:block;color:var(--mute);font-weight:400;font-size:14px}
+.qty{display:flex;align-items:center;gap:12px;font-family:var(--font-judul)}
+.qty button{width:34px;height:34px;border:1.5px solid var(--ink);background:none;color:var(--ink);border-radius:var(--r-tombol);font-size:18px;cursor:pointer}
+#panel input{width:100%;margin-top:10px;padding:11px 12px;font:inherit;color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:var(--r-foto)}
+.tot{display:flex;justify-content:space-between;font:700 19px var(--font-judul);padding:16px 0 12px}
+.kirim{display:block;text-align:center;text-decoration:none;background:#25D366;color:#073B1B;font:800 16px var(--font-judul);padding:14px;border-radius:var(--r-tombol)}
+
+/* ===== Tombol info, kredit, fade-in foto ===== */
+.tautan{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tautan:empty{display:none}
+.tautan a{color:var(--ink);text-decoration:none;font:500 14px var(--font-judul);border:1.5px solid var(--line);padding:6px 14px;border-radius:var(--r-tombol)}
+.tautan a:hover{border-color:var(--ink)}
+.kredit{max-width:760px;margin:0 auto;padding:0 22px 100px;color:var(--mute);font-size:13px}
+.kredit a{color:inherit}
+.foto{opacity:0}
+.foto.ok{opacity:1;transition:opacity .35s}
+@media (prefers-reduced-motion:reduce){.foto.ok{transition:none}}
+
+/* ===== Overlay memuat + tombol muat ulang ===== */
+#muat{position:fixed;inset:0;z-index:30;background:var(--bg);color:var(--mute);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:500 16px var(--font-judul)}
+#muat[hidden]{display:none}
+#muat p{margin:0}
+.spin{width:38px;height:38px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--ink);animation:putar .8s linear infinite}
+@keyframes putar{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2.4s}}
+.reload{flex:none;width:36px;height:36px;border:1.5px solid var(--ink);background:none;color:var(--ink);border-radius:var(--r-tombol);font-size:18px;line-height:1;cursor:pointer}
+
+/* ===== Opsi menu (gula, suhu, tambahan) ===== */
+#opsi{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+#opsi[hidden]{display:none}
+.grup{padding:12px 0;border-top:1px solid var(--line)}
+.gn{font:700 16px var(--font-judul);margin-bottom:4px}
+.gn small{font-weight:400;color:var(--mute);margin-left:8px;font-size:13px}
+.pil{display:flex;align-items:center;gap:10px;padding:8px 0;cursor:pointer}
+.pil span{flex:1}
+.pil em{font-style:normal;color:var(--mute);font-size:14px}
+.pil input{width:20px;height:20px;accent-color:var(--ink)}
+.kirim.ok{width:100%;border:0;margin-top:12px;background:var(--ink);color:var(--bg);cursor:pointer}
+
+/* ===== Jenis pesanan, validasi, notifikasi ===== */
+.mode{display:flex;gap:8px;margin:6px 0 2px}
+.mode label{position:relative;flex:1;cursor:pointer}
+#panel .mode input{position:absolute;opacity:0;width:0;height:0;margin:0;padding:0;border:0}
+.mode span{display:block;text-align:center;padding:9px 8px;border:1.5px solid var(--ink);border-radius:var(--r-tombol);font:600 14px var(--font-judul)}
+.mode input:checked+span{background:var(--ink);color:var(--bg)}
+.mode input:focus-visible+span{outline:3px solid var(--aksen);outline-offset:2px}
+#panel input.salah{border-color:var(--pedas)}
+#err{color:var(--pedas);font-size:14px;margin-top:8px}
+#err[hidden]{display:none}
+.cat{margin:-4px 0 12px;color:var(--mute);font-size:13px}
+#notif{position:fixed;left:16px;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;z-index:25;background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:12px;font-size:15px;line-height:1.4}
+#notif[hidden]{display:none}
+#notif a{color:inherit;font-weight:700}
