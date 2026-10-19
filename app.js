@@ -178,7 +178,8 @@ function link(){
 function update(){
   const en=L==="en";let n=0,tot=0;
   lines.forEach(ln=>{n+=ln.q;tot+=ln.q*(hg(ln.it)+info(ln,en).add)});
-  wa.textContent=n?(en?`View order (${n}) · ${rp(tot)}`:`Lihat pesanan (${n}) · ${rp(tot)}`):(en?"Order via WhatsApp":"Pesan via WhatsApp");
+  wa.textContent=n?(en?`View order (${n}) · ${rp(tot)}`:`Lihat pesanan (${n}) · ${rp(tot)}`):(en?"Choose items first":"Pilih menu dulu");
+  wa.classList.toggle("off",!n);wa.setAttribute("aria-disabled",n?"false":"true");
   $("#daftar").innerHTML=lines.map((ln,k)=>{const f=info(ln,en);return`<div class="row"><span class="rn">${esc(nmL(ln.it))}<small>${f.lab.length?esc(f.lab.join(", "))+" · ":""}${rp(hg(ln.it)+f.add)}</small></span><span class="qty"><button data-i="${k}" data-d="-1" aria-label="Kurangi">−</button><b>${ln.q}</b><button data-i="${k}" data-d="1" aria-label="Tambah">+</button></span></div>`}).join("");
   $("#total").textContent=rp(tot);link();
 }
@@ -187,7 +188,7 @@ $("#daftar").onclick=e=>{
   const k=+b.dataset.i,ln=lines[k];ln.q+=+b.dataset.d;if(ln.q<1)lines.splice(k,1);
   update();if(!lines.length)panel.hidden=true;
 };
-wa.onclick=e=>{if(lines.length){e.preventDefault();panel.hidden=false}};
+wa.onclick=e=>{e.preventDefault();if(lines.length)panel.hidden=false};
 $("#tutup").onclick=()=>panel.hidden=true;
 panel.onclick=e=>{if(e.target===panel)panel.hidden=true};
 dlg.onclick=e=>{if(e.target===dlg)dlg.hidden=true};
