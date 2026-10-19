@@ -37,6 +37,7 @@ h2{font-size:30px;margin:0 0 4px;font-weight:var(--judul-berat);letter-spacing:-
 .habis .harga{text-decoration:line-through}
 footer{max-width:760px;margin:0 auto;padding:0 22px 40px;color:var(--mute);font-size:14px}
 .wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);text-decoration:none;font-weight:800;font-size:16px;padding:13px 20px;border-radius:var(--r-tombol);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.wa.off{background:var(--line);color:var(--mute);box-shadow:none;cursor:not-allowed}
 
 /* ===== Keranjang pesanan ===== */
 .tambah{margin-top:10px;border:0;background:var(--aksen);color:var(--aksen-teks);font:600 14px var(--font-judul);padding:7px 14px;border-radius:var(--r-tombol);cursor:pointer}
