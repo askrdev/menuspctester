@@ -93,8 +93,8 @@
 
 /* Kaca: header, bar, main, footer, dan kredit jadi kotak transparan di atas background warna-warni */
 [data-tema="kaca"]{
-  --bg:#EAF2F0; --ink:#13302B; --mute:#3F5A54; --line:rgba(19,48,43,.18);
-  --aksen:#F2994A; --aksen-teks:#2B1A08; --pedas:#B8322A;
+  --bg:#FFA100; --ink:#006924; --mute:rgba(22,20,21,.60); --line:rgba(0,105,36,.18);
+  --aksen:#FFA100; --aksen-teks:#006924; --pedas:#B8322A;
   --font-judul:"Bricolage Grotesque",system-ui,sans-serif; --font-isi:"DM Sans",system-ui,sans-serif;
   --r-foto:14px; --r-tombol:999px; --r-tag:999px; --judul-berat:800;
 
@@ -108,9 +108,9 @@
 /* background di belakang kotak (bisa juga url(foto/bg.jpg) center/cover) */
 [data-tema="kaca"] body{
   background:
-    radial-gradient(circle at 15% 10%,#F7C873 0,transparent 40%),
-    radial-gradient(circle at 85% 30%,#7FD1AE 0,transparent 45%),
-    radial-gradient(circle at 30% 90%,#9DB8F2 0,transparent 45%),
+    radial-gradient(circle at 15% 10%,#006924 0,transparent 30%),
+    radial-gradient(circle at 85% 30%,#006924 0,transparent 80%),
+    radial-gradient(circle at 30% 90%,#FFA100 0,transparent 300%),
     #EAF2F0;
   background-attachment:fixed;
 }
